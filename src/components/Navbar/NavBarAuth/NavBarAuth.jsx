@@ -1,21 +1,20 @@
 import { NavLink } from 'react-router-dom';
-import styles from './nav-menu.module.css';
 
-const NavMenu = () => {
+import styles from './nav-bar-auth.module.css';
+export const NavBarAuth = () => {
   return (
     <ul className={styles.menu}>
       <li className={styles.item}>
-        <NavLink className={styles.link} to="/">
-          Home page
+        <NavLink className={styles.link} to="/register">
+          Register
         </NavLink>
       </li>
+
       <li className={styles.item}>
-        <NavLink className={styles.link} to="/phonebooks">
-          PhoneBook
+        <NavLink className={styles.link} to="/login">
+          Login
         </NavLink>
       </li>
     </ul>
   );
 };
-
-export { NavMenu };

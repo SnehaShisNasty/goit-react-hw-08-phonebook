@@ -1,16 +1,9 @@
 .menu {
   list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: #f2f2f2;
   display: flex;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.item {
-  margin: 0 10px;
-}
 .link {
   text-decoration: none;
   color: #333;
@@ -22,4 +15,7 @@
 
 .link:global(.active) {
   color: red;
+}
+.link:hover {
+  border-bottom: solid 1px #333;
 }
