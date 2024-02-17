@@ -1,6 +1,6 @@
 import React, { useState, useId } from 'react';
 
-import css from './register-form.module.css';
+// import css from './register-form.module.css';
 
 const INITIAL_STATE = {
   name: '',

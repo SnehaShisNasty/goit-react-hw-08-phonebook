@@ -4,7 +4,7 @@ import { selectUser } from '../../../redux/auth/auth-selectors';
 
 const NavBarUser = () => {
   const { name } = useSelector(selectUser);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   return (
     <div className={styles.menu}>
       <span className={styles.link}>{name}</span>
