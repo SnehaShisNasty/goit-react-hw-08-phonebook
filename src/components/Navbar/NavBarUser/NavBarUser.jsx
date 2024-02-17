@@ -1,5 +1,5 @@
 import styles from './nav-bar-user.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/auth-selectors';
 
 const NavBarUser = () => {
