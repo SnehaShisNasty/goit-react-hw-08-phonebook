@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { signupRequest, loginRequest } from 'api/auth';
+import { signupRequest, loginRequest, currentRequest } from 'api/auth';
 
 export const signup = createAsyncThunk(
   'auth/signup',
@@ -10,7 +10,6 @@ export const signup = createAsyncThunk(
       const { data } = await signupRequest(body);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
   }
@@ -23,8 +22,27 @@ export const login = createAsyncThunk(
       const { data } = await loginRequest(body);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
+  }
+);
+export const current = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const data = await currentRequest(auth.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { auth } = getState();
+      if (!auth.token) {
+        return false;
+      }
+    },
   }
 );

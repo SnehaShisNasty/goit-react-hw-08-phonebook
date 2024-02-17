@@ -1,9 +1,10 @@
 import styles from './nav-bar-user.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../../redux/auth/auth-selectors';
 
-export const NavBarUser = () => {
+const NavBarUser = () => {
   const { name } = useSelector(selectUser);
+  const dispatch = useDispatch();
   return (
     <div className={styles.menu}>
       <span className={styles.link}>{name}</span>
@@ -11,3 +12,4 @@ export const NavBarUser = () => {
     </div>
   );
 };
+export default NavBarUser;
