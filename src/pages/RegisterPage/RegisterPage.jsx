@@ -1,4 +1,4 @@
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,6 @@ import {
 import { Navigate } from 'react-router-dom';
 import styles from './register-page.module.css';
 import Loading from 'components/Loading/Loading';
-import Error from '../../components/Erorr/Erorr';
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const authLoading = useSelector(selectAuthLoading);
