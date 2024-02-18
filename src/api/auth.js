@@ -18,14 +18,21 @@ export const loginRequest = body => {
   return authInstance.post('/users/login', body);
 };
 
-export const currentRequest = async token => {
+export const currentRequest = token => {
   setToken(token);
   try {
-    const { data } = await authInstance.get('/users/current');
-    console.log(data);
+    const data = authInstance.get('/users/current');
     return data;
   } catch (error) {
     setToken();
     throw error;
   }
 };
+
+export const logoutRequest = () => {
+  const data = authInstance.post('/users/logout');
+  setToken();
+  return data;
+};
+
+export default authInstance;

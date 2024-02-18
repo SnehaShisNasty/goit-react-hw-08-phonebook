@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../../redux/contacts/contacts-operations';
 const INITIAL_STATE = {
   name: '',
-  phone: '',
+  number: '',
 };
 const Form = () => {
   const [state, setState] = useState({ ...INITIAL_STATE });
@@ -26,13 +26,13 @@ const Form = () => {
 
     onAddContact({ ...state });
   };
-  const isDublicate = ({ name, phone }) => {
+  const isDublicate = ({ name, number }) => {
     const normalizedName = name.toLowerCase();
-    const normalizedNumber = phone.toLowerCase();
+    const normalizedNumber = number.toLowerCase();
 
     const dublicate = items.find(item => {
       const normalizedCurrentName = item.name.toLowerCase();
-      const normalizedCurrentNumber = item.phone.toLowerCase();
+      const normalizedCurrentNumber = item.number.toLowerCase();
       return (
         normalizedCurrentName === normalizedName ||
         normalizedCurrentNumber === normalizedNumber
@@ -43,7 +43,7 @@ const Form = () => {
   };
   const onAddContact = data => {
     if (isDublicate(data)) {
-      return alert(`Book with ${data.phone} and ${data.name} already in list`);
+      return alert(`Book with ${data.number} and ${data.name} already in list`);
     }
     dispatch(addContact(data));
 
@@ -51,7 +51,7 @@ const Form = () => {
   };
 
   const reset = () => {
-    setState({ name: '', phone: '' });
+    setState({ name: '', number: '' });
   };
 
   const nameInputId = nanoid();
@@ -75,8 +75,8 @@ const Form = () => {
         <input
           className={css.input}
           type="tel"
-          name="phone"
-          value={state.phone}
+          name="number"
+          value={state.number}
           onChange={handleChange}
           id={numberInputId}
           required

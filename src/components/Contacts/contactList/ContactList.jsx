@@ -1,5 +1,6 @@
-import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
+
+import css from './ContactList.module.css';
 
 import {
   selectError,
@@ -11,6 +12,7 @@ import {
   fetchContacts,
   deleteContact,
 } from '../../../redux/contacts/contacts-operations';
+import Loading from 'components/Loading/Loading';
 
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -29,11 +31,12 @@ export const ContactList = () => {
   return (
     <ul className={css.list}>
       {error && <p>{error}</p>}
-      {isLoading && <p>...Loading</p>}
+      {isLoading && <Loading />}
+
       {Boolean(items.length) &&
-        items.map(({ name, id, phone }) => (
+        items.map(({ name, id, number }) => (
           <li key={id} className={css.item}>
-            {name}: {phone}
+            {name}: {number}
             <button onClick={() => onDeleteContact(id)} className={css.delete}>
               Delete
             </button>

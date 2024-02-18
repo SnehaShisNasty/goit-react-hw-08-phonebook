@@ -10,7 +10,7 @@ const NavMenu = () => {
     ? menuItems.filter(item => !item.private)
     : menuItems;
   const elements = filteredMenuItems.map(({ id, to, text }) => (
-    <li key={id}>
+    <li key={id} className={styles.item}>
       <NavLink className={styles.link} to={to}>
         {text}
       </NavLink>

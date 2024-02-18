@@ -9,6 +9,8 @@ import {
   selectIsLogin,
 } from '../../redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
+import styles from './login-page.module.css';
+import Loading from 'components/Loading/Loading';
 const LoginPage = () => {
   const dispatch = useDispatch();
   const authLoading = useSelector(selectAuthLoading);
@@ -22,13 +24,13 @@ const LoginPage = () => {
     return <Navigate to="/phonebooks" />;
   }
   return (
-    <div>
-      {authLoading && <p>...Loding</p>}
-      <h1>Login Page</h1>
+    <main className={styles.main}>
+      {authLoading && <Loading />}
+      <h1 className={styles.title}>Login Page</h1>
       <LoginForm onSubmit={handleLogin}></LoginForm>
       {authError && <p>{authError}</p>}
       <Outlet></Outlet>
-    </div>
+    </main>
   );
 };
 export default LoginPage;

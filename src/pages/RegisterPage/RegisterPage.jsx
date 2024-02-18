@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,9 @@ import {
   selectIsLogin,
 } from '../../redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
+import styles from './register-page.module.css';
+import Loading from 'components/Loading/Loading';
+import Error from '../../components/Erorr/Erorr';
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const authLoading = useSelector(selectAuthLoading);
@@ -21,11 +25,11 @@ const RegisterPage = () => {
     return <Navigate to="/phonebooks" />;
   }
   return (
-    <main>
-      <h1>Register Form</h1>
-      {authLoading && <p>...Loding</p>}
+    <main className={styles.main}>
+      <h1 className={styles.title}>Register Form</h1>
+      {authLoading && <Loading />}
       <RegisterForm onSubmit={handleSignup}></RegisterForm>
-      {authError && <p>{authError}</p>}
+      {authError && toast.error('This is an error!')}
       <Outlet></Outlet>
     </main>
   );

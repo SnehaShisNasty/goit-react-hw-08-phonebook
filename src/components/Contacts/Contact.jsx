@@ -6,13 +6,13 @@ import { Filter } from './filter/Filter';
 import css from './Contact.module.css';
 export const Contact = () => {
   return (
-    <section className={css.section}>
+    <div className={css.main}>
       <h1 className={css.title}>Phonebook</h1>
       <Form></Form>
 
       <Filter></Filter>
-      <h2 className={css.titleContacts}> Contacts</h2>
+      <h2 className={css.title}> Contacts</h2>
       <ContactList></ContactList>
-    </section>
+    </div>
   );
 };

@@ -9,7 +9,7 @@ const Navbar = () => {
   const isLogin = useSelector(selectIsLogin);
   return (
     <header className={styles.menu}>
-      <NavLink className={styles.link} to="/">
+      <NavLink className={styles.logo} to="/">
         Logo
       </NavLink>
       <NavMenu></NavMenu>

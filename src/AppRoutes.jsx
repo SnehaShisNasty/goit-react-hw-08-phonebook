@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { SharedLayout } from './components/SharedLayout/SharedLayout';
-
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -19,7 +19,10 @@ const AppRoutes = () => {
         <Route index element={<HomePage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="phonebooks" element={<PhoneBooksPage />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="phonebooks" element={<PhoneBooksPage />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

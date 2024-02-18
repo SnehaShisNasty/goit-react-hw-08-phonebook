@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, login, current } from './auth-operations';
+import { signup, login, current, logout } from './auth-operations';
 const initialState = {
   user: {},
   token: '',
@@ -34,9 +34,7 @@ const authSlice = createSlice({
       .addCase(signup.rejected, errorReducer)
       .addCase(login.pending, loadingReducer)
       .addCase(login.fulfilled, (state, { payload }) => {
-        console.log(state);
         state.user = payload.user;
-        console.log(state);
         state.token = payload.token;
         state.isLogin = true;
         state.isLoading = true;
@@ -45,11 +43,7 @@ const authSlice = createSlice({
       .addCase(login.rejected, errorReducer)
       .addCase(current.pending, loadingReducer)
       .addCase(current.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        console.log(state);
-        state.user = payload.user;
-        console.log(state);
-        state.token = payload.token;
+        state.user = payload;
         state.isLogin = true;
         state.isLoading = false;
         state.error = null;
@@ -57,7 +51,16 @@ const authSlice = createSlice({
       .addCase(current.rejected, state => {
         state.isLoading = false;
         state.token = '';
-      });
+      })
+      .addCase(logout.pending, loadingReducer)
+      .addCase(logout.fulfilled, (state, { payload }) => {
+        state.isLogin = false;
+        state.isLoading = false;
+
+        state.token = '';
+        state.user = {};
+      })
+      .addCase(logout.rejected, errorReducer);
   },
 });
 export default authSlice.reducer;
