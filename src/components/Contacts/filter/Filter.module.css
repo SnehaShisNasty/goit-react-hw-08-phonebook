@@ -5,9 +5,9 @@
   margin-bottom: 20px;
 }
 .filterLabel {
-  font-weight: bold;
   margin-bottom: 8px;
-  color: #333;
+  font-size: 20px;
+  letter-spacing: 0.2em;
 }
 
 .filterInput {
@@ -15,15 +15,16 @@
   display: flex;
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  background-color: #ffdfdf;
+  border: 1px solid #ffc107;
+  border-radius: 5px;
   border-radius: 6px;
   box-sizing: border-box;
-  margin-bottom: 20px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .filterInput:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+  border-color: #ffc107;
+  box-shadow: 0 0 60px #eee;
 }

@@ -1,14 +1,15 @@
 .form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .label {
-  font-weight: bold;
   margin-bottom: 8px;
-  color: #333;
+  font-size: 20px;
+  letter-spacing: 0.2em;
 }
 
 .input {
@@ -16,30 +17,46 @@
   display: flex;
   padding: 12px;
   font-size: 16px;
-  margin-bottom: 14px;
-  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  background-color: #ffdfdf;
+  border: 1px solid #ffc107;
+  border-radius: 5px;
   border-radius: 6px;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+.input_working {
+  box-shadow: 0 0 20px #eee;
+}
 .input:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+  border-color: #ffc107;
+  box-shadow: 0 0 60px #eee;
 }
 
 .submit {
-  background-color: #3498db;
-  color: #fff;
-  padding: 12px;
+  background-image: linear-gradient(
+    to right,
+    #d4a4a4 0%,
+    #ab7966 51%,
+    #7a6464 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: 333;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-family: inherit;
 }
 
 .submit:hover {
-  background-color: #2980b9;
+  background-position: right center;
+  color: #333;
+  text-decoration: none;
 }

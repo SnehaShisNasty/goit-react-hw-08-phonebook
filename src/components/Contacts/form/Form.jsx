@@ -61,7 +61,7 @@ const Form = () => {
       <label htmlFor={nameInputId} className={css.label}>
         Name
         <input
-          className={css.input}
+          className={`${css.input} ${css.input_working}`}
           type="text"
           name="name"
           value={state.name}
@@ -73,7 +73,7 @@ const Form = () => {
       <label htmlFor={numberInputId} className={css.label}>
         Number
         <input
-          className={css.input}
+          className={`${css.input} ${css.input_working}`}
           type="tel"
           name="number"
           value={state.number}
@@ -83,15 +83,15 @@ const Form = () => {
         />
       </label>
       <label htmlFor={nameInputId} className={css.label}>
-        Email (is not working now)
+        Email (Broken)
         <input className={css.input} disabled />
       </label>
       <label htmlFor={nameInputId} className={css.label}>
-        Address (is not working now)
+        Address (Broken)
         <input className={css.input} disabled />
       </label>
       <label htmlFor={nameInputId} className={css.label}>
-        Mob. Phone (is not working now)
+        Mob. Phone (Broken)
         <input className={css.input} disabled />
       </label>
 
