@@ -82,6 +82,18 @@ const Form = () => {
           required
         />
       </label>
+      <label htmlFor={nameInputId} className={css.label}>
+        Email (is not working now)
+        <input className={css.input} disabled />
+      </label>
+      <label htmlFor={nameInputId} className={css.label}>
+        Address (is not working now)
+        <input className={css.input} disabled />
+      </label>
+      <label htmlFor={nameInputId} className={css.label}>
+        Mob. Phone (is not working now)
+        <input className={css.input} disabled />
+      </label>
 
       <button type="submit" className={css.submit}>
         Add Contact

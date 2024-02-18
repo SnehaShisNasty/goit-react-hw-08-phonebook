@@ -36,6 +36,7 @@ export const current = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
+
       const { data } = await currentRequest(auth.token);
       return data;
     } catch (error) {
@@ -53,9 +54,11 @@ export const current = createAsyncThunk(
 );
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await logoutRequest();
+      const { auth } = getState();
+      const { data } = await logoutRequest(auth.token);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);

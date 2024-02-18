@@ -1,7 +1,14 @@
 import authInstance from './auth';
-
-export const requestFetchContacts = () => {
-  return authInstance.get('/contacts');
+import { setToken } from './auth';
+export const requestFetchContacts = token => {
+  setToken(token);
+  try {
+    const data = authInstance.get('/contacts');
+    return data;
+  } catch (error) {
+    setToken();
+    throw error;
+  }
 };
 export const requestAddContacts = body => {
   return authInstance.post('/contacts', body);

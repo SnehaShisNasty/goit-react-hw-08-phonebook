@@ -1,11 +1,7 @@
-// import 'react-toastify/dist/ReactToastify.css';
+import Notiflix from 'notiflix';
 
-// const Notify = () => {
-//   return (
-//     <>
-//       <Notify></Notify>
-//       <ToastContainer />
-//     </>
-//   );
-// };
-// export default Error;
+const ErrorMessage = ({ text }) => {
+  console.log(text);
+  return <>{Notiflix.Notify.failure(`${text}`)}</>;
+};
+export default ErrorMessage;

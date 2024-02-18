@@ -19,11 +19,6 @@ const LoginForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ ...state });
-    reset();
-  };
-
-  const reset = () => {
-    setState({ email: '', password: '' });
   };
 
   const { email, password } = state;

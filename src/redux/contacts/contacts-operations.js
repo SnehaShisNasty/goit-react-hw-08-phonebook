@@ -3,9 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await contactsApi.requestFetchContacts();
+      const { auth } = getState();
+      const { data } = await contactsApi.requestFetchContacts(auth.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

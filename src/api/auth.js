@@ -3,7 +3,7 @@ const authInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 
-const setToken = token => {
+export const setToken = token => {
   if (token) {
     return (authInstance.defaults.headers.authorization = `Bearer ${token}`);
   }
@@ -29,10 +29,16 @@ export const currentRequest = token => {
   }
 };
 
-export const logoutRequest = () => {
-  const data = authInstance.post('/users/logout');
-  setToken();
-  return data;
+export const logoutRequest = token => {
+  setToken(token);
+
+  try {
+    const data = authInstance.post('/users/logout');
+    return data;
+  } catch (error) {
+    setToken();
+    throw error;
+  }
 };
 
 export default authInstance;

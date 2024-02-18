@@ -1,5 +1,5 @@
 import LoginForm from '../../components/LoginForm/LoginForm';
-
+import ErrorMessage from 'components/Erorr/Erorr';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
   const isLogin = useSelector(selectIsLogin);
-
+  console.log(authError);
   const handleLogin = body => {
     dispatch(login(body));
   };
@@ -28,7 +28,7 @@ const LoginPage = () => {
       {authLoading && <Loading />}
       <h1 className={styles.title}>Login Page</h1>
       <LoginForm onSubmit={handleLogin}></LoginForm>
-      {authError && <p>{authError}</p>}
+      {authError && <ErrorMessage text={authError} />}
       <Outlet></Outlet>
     </main>
   );

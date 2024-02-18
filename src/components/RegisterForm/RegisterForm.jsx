@@ -20,12 +20,11 @@ const RegisterForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ ...state });
-    reset();
   };
 
-  const reset = () => {
-    setState({ name: '', email: '', password: '' });
-  };
+  // const reset = () => {
+  //   setState({ name: '', email: '', password: '' });
+  // };
 
   const { name, email, password } = state;
 
